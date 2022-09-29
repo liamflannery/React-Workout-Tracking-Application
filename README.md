@@ -1,13 +1,6 @@
-# A Real-Time Chat Service
+# Gym App
 
-This repository is the starter kit for the COMP3120 Individual Project
-for 2022: a real time chat service.  The back-end implementation is
-in the `server` subdirectory.  The front-end project is homed in the
-main directory (with sources in `src`).  
 
-Note that you can make any changes you deem necessary to this code including
-fixing bugs and adding features.  That includes changing this file which should document
-your personal project.
 
 ## Configuration
 
