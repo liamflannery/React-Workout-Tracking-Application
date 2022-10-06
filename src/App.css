@@ -14,14 +14,14 @@
 }
 
 .App-header {
-  background-color: #a6192e;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(55, 55, 55);
 }
 
 .App-link {
@@ -35,4 +35,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.exercises {
+  list-style: none;
+  padding-left: 0;
+}
+
+.exercises li {
+  display: flex;
+  align-items: center;
+  border: solid 2px #d0d0d0;
+  border-radius: .2em;
+  padding: .5em .8em .5em .5em;
+  margin-bottom: 1em;
+}
+
+.exercises p {
+  max-width: none;
+  font-weight: bold;
+  margin: 0;
+}
+
+.exercises-thumb {
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 2em;
+  height: 2em;
+  background-color: #e8e8e8;
+  padding: .5em;
+  margin-right: .5em;
+}
+
+.exercises-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
