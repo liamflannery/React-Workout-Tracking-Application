@@ -1,39 +1,39 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import './App.css';
-const DayList = () =>{
-    const dayList = [
+import '../App.css';
+const ExerciseList = () =>{
+    const exerciseList = [
         {
-          id: 'monday',
-          name: 'Monday',
-          thumb: '/images/dumbell.png'
+          id: 'bench',
+          name: 'Bench Press',
+          thumb: '/images/bench_press.png'
         },
         {
-            id: 'tuesday',
-            name: 'Tuesday',
-            thumb: '/images/dumbell.png'
+            id: 'squat',
+            name: 'Squat',
+            thumb: '/images/squat.jpeg'
         }
     ]
-    const [days, updateDays] = useState(dayList);
+    const [exercises, updateExercises] = useState(exerciseList);
 
     function handleOnDragEnd(result) {
         if (!result.destination) return;
 
-            const items = Array.from(days);
+            const items = Array.from(exercises);
             const [reorderedItem] = items.splice(result.source.index, 1);
             items.splice(result.destination.index, 0, reorderedItem);
 
-            updateDays(items);
+            updateExercises(items);
     }
         
         return (
        
         <div className="App">
           <DragDropContext onDragEnd={handleOnDragEnd}>
-            <Droppable droppableId="days">
+            <Droppable droppableId="exercises">
               {(provided) => (
                 <ul className="exercises" {...provided.droppableProps} ref={provided.innerRef}>
-                  {days.map(({id, name, thumb}, index) => {
+                  {exercises.map(({id, name, thumb}, index) => {
                     return (
                       <Draggable key={id} draggableId={id} index={index}>
                         {(provided) => (
@@ -59,4 +59,4 @@ const DayList = () =>{
         
 }
 
-export default DayList
+export default ExerciseList

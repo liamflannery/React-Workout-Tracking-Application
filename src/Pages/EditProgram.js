@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import './App.css';
-import DayList from './DayList';
+import '../App.css';
+import DayList from '../Components/DayList';
+import { Outlet, Link, useNavigate } from "react-router-dom";
 const WorkoutPage = () =>{
-   
+        const navigate = useNavigate()
+        const editDay = () => {
+            navigate('/edit/day')
+        }
         
         return (
         <div class = "container">
             <header className="App-header">
                 <h1> Program Page</h1>
-                <form>
+                <form onSubmit = {editDay}>
                     <div class="row">
                         <div class="seven columns">
                         <input class="u-full-width" type="email" placeholder="Push Pull Legs" id="exampleEmailInput"/>

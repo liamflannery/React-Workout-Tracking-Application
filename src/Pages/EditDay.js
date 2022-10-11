@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import './App.css';
-import ExerciseList from './ExerciseList';
-const DayPage = () =>{
+import '../App.css';
+import ExerciseList from '../Components/ExerciseList';
+const EditDay = () =>{
    
         
         return (
@@ -35,4 +35,4 @@ const DayPage = () =>{
         
 }
 
-export default DayPage
+export default EditDay
