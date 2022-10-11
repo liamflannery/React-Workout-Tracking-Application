@@ -1,12 +1,12 @@
 
 import './App.css';
-import Landing from './Pages/Landing';
-import ProgramPage from './Pages/ProgramPage';
-import DayPage from './Pages/DayPage';
-import ProgramManager from './Pages/ProgramManager';
-import EditProgram from './Pages/EditProgram';
-import EditDay from './Pages/EditDay';
-import Layout from './Pages/Layout';
+import Landing from './pages/Landing';
+import ProgramPage from './pages/ProgramPage';
+import DayPage from './pages/DayPage';
+import ProgramManager from './pages/ProgramManager';
+import EditProgram from './pages/EditProgram';
+import EditDay from './pages/EditDay';
+import Layout from './pages/Layout';
 
 import {
   BrowserRouter as Router,

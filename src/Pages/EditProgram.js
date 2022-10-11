@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../App.css';
-import DayList from '../Components/DayList';
+import DayList from '../components/DayList';
 import { Outlet, Link, useNavigate } from "react-router-dom";
 const WorkoutPage = () =>{
         const navigate = useNavigate()

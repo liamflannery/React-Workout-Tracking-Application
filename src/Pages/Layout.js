@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import MenuBar from '../Components/MenuBar';
+import MenuBar from '../components/MenuBar';
 const Layout = () => {
   return (
     <>
