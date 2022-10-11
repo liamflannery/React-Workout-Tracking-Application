@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import Daycontent from "../components/daycontent.js";
+import Muidaycontent from "../components/muidaycontent";
 
 function ProgramPage() {
 
@@ -100,9 +101,13 @@ function ProgramPage() {
           </div>
         ))}
       </form>
+
+      <Daycontent/>
+
+      <Muidaycontent/>
+      
     </div>
     );
   }
-  
   export default ProgramPage;
   
