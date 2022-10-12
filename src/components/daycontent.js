@@ -76,7 +76,46 @@ const daycontent = (title) => (
     
   </Segment>
   
-
 )
 
-export default daycontent
+const test = () => (
+  <div className="container my-4" style={{ width: "500px" }}>
+  <form className="form w-100">
+    <h3>Schedule</h3>
+    <div className="form-check">
+      <input
+        type="checkbox"
+        className="form-check-input"
+        name="allSelect"
+        // checked={
+        //   days.filter((day) => day?.isChecked !== true).length < 1
+        // }
+        checked={!days.some((day) => day?.isChecked !== true)}
+        onChange={handleChange}
+      />
+      <label className="form-check-label">All Select</label>
+    </div>
+    {days.map((day, index) => (
+      <div className="form-check" key={index}>
+        <input
+          type="checkbox"
+          className="form-check-input"
+          name={day.name}
+          checked={day?.isChecked || false}
+          onChange={handleChange}
+        />      
+        <label className="form-check-label">
+          {day.name}
+            <ul>
+              {day.workout}
+            </ul> 
+        </label>
+
+      </div>
+    ))}
+  </form>
+</div>
+)
+
+
+export default {daycontent, test}
