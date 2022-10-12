@@ -1,4 +1,6 @@
 import React from 'react'
+//import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 import { Divider, Header, Image, Segment } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 
@@ -41,6 +43,7 @@ const dayData = [
   },
 ];
 
+/* 
 const [days, setDays] = useState([]);
 
 useEffect(() => {
@@ -62,6 +65,7 @@ const handleChange = (e) => {
   }
 };
 
+*/
 const daycontent = (title) => (
   <Segment>
     <Link to="/day">
@@ -77,7 +81,7 @@ const daycontent = (title) => (
   </Segment>
   
 )
-
+/*
 const test = () => (
   <div className="container my-4" style={{ width: "500px" }}>
   <form className="form w-100">
@@ -116,6 +120,6 @@ const test = () => (
   </form>
 </div>
 )
+*/
 
-
-export default {daycontent, test}
+export default daycontent
