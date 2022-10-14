@@ -4,7 +4,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useState} from 'react';
 
 
-const WorkoutPage = () => {
+const DayPage = () => {
    
     const Workout = [
         {
@@ -147,4 +147,4 @@ onSelect={handleSelect}
 );
 }
 
-export default WorkoutPage
+export default DayPage
