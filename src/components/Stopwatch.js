@@ -1,6 +1,6 @@
 import {Component} from 'react'
 
- import './index.css'
+ import '../index.css'
 
  class Stopwatch extends Component {
    state = {
