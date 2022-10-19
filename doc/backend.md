@@ -1,7 +1,7 @@
 # Backend Server
 
 The project provides a backend service to support real time chat.   Users can
-register and create new conversation topics, post and join conversations.
+register and create new program topics, post and join programs.
 Real time chat is supported via web sockets.
 
 To star the backend, run:
@@ -34,37 +34,37 @@ the user registers.
 * GET - get the user details
   * response: {"status": "unregistered"} or `{"status": "success", "username": "bob", "token": "xxxxxx"}`
 
-`/api/conversations/`
+`/api/programs/`
 
-* `POST` - create a new conversation
+* `POST` - create a new program
   * requires a valid session cookie
-  * request: `{"title": "conversation title"}`
-  * response: `{"status": "success" | "unauthorised", "id": "conversation id"}
+  * request: `{"title": "program title"}`
+  * response: `{"status": "success" | "unauthorised", "id": "program id"}
 
-* `GET` - list conversations
+* `GET` - list programs
   * requires a valid session cookie
-  * response: `{"conversations": [{"title": "xyzzy", "messages": 99, "id": "conversation id"}]}`
+  * response: `{"programs": [{"title": "xyzzy", "days": 99, "id": "program id"}]}`
 
-`/api/conversations/:id`
+`/api/programs/:id`
 
-* `GET` - list recent messages
+* `GET` - list recent days
   * requires a valid session cookie
-  * query parameter `N` - number of messages, default 10
-  * response: `{"messages": [{"creator": "username", "text": "message text", "timestamp": "TTT", "id": "message id"}]}`
+  * query parameter `N` - number of days, default 10
+  * response: `{"days": [{"creator": "username", "text": "day text", "timestamp": "TTT", "id": "day id"}]}`
 
-* `POST` - post a new message
+* `POST` - post a new day
   * requires a valid session cookie
-  * request: `{"text": "message text"}`
-  * response: `{"status": "success" | "unauthorised", "id": "message id"}`
+  * request: `{"text": "day text"}`
+  * response: `{"status": "success" | "unauthorised", "id": "day id"}`
 
-`/api/conversations/:id/:messageid`
+`/api/programs/:id/:dayid`
 
-* `GET` - get message detail
+* `GET` - get day detail
   * requires a valid session cookie
-  * response: `{"creator": "usernamae", "text": "message text", "timestamp": "TTT", "id": "message id"}`
+  * response: `{"creator": "usernamae", "text": "day text", "timestamp": "TTT", "id": "day id"}`
 
-* `DELETE` - delete message
-  * requires a valid session cookie for the user who created the message
+* `DELETE` - delete day
+  * requires a valid session cookie for the user who created the day
   * response: `{"status": "success" | "unauthorised"}
 
 ## Database
@@ -84,24 +84,24 @@ You will need to add the access URL to your `.env` file for the server to work.
 }
 ```
 
-### Conversations
+### Programs
 
 ```json
 {
-    "_id": "conversation id",
-    "title": "conversation title",
+    "_id": "program id",
+    "title": "program title",
     "creator": "username of creator"
 }
 ```
 
-### Messages
+### Days
 
 ```json
 {
-    "_id": "message id",
-    "conversation": "conversation id",
+    "_id": "day id",
+    "program": "program id",
     "user": "username of author",
-    "timestamp": "ISO timestamp for message",
-    "text": "markdown text of the message"
+    "timestamp": "ISO timestamp for day",
+    "text": "markdown text of the day"
 }
 ```
