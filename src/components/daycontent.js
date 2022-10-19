@@ -22,7 +22,8 @@ const Daycontent = () => {
       workout: [
         "Barbell Squats",
         "Running",
-        "Situps"
+        "Situps",
+        "Something",
       ] 
     },
     { 
@@ -39,7 +40,9 @@ const Daycontent = () => {
       name: "Day 4",
       workout: [
         "Seated Cable Rows",
-        "Push Ups" 
+        "Push Ups",
+        "something",
+        "Something", 
       ]
     },
     { 
@@ -47,6 +50,10 @@ const Daycontent = () => {
       name: "Day 5",
       workout: [
         "Bicep Curls",
+        "Lateral Pull Downs",
+        "Something",
+        "Something",
+        "Something",
       ]
     },
   ];
