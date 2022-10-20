@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 //import { useEffect, useState } from "react";
 import { Divider, Header, Image, Segment } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
+import axios from './utils/axios';
 
 const Daycontent = () => {
   const dayData = [
@@ -64,7 +65,39 @@ const Daycontent = () => {
     setDays(dayData);
   }, []);
 
+  const baseURL = 'https://api.example'
+  const APIKey = 'api_key=example'
 
+  const gettests = () => {
+	return axios
+		.get(
+			baseURL + `/top_rated?${APIKey}&language=en-US&page=1%27`,
+		)
+		.then(response => response.data.results)
+  }
+
+  const gettest = (testid) => {
+	return axios
+		.get(
+			`${baseURL}/${testid}?${APIKey}&language=en-US`,
+		)
+		.then(response => response.data)
+  }
+
+  const getDays = () => {
+    return axios.get(baseURL)
+        .then(response => response)
+}
+  const getDay = (dayid) => {
+    return axios.get(`${baseURL}/${dayid}?&language=en-US`)
+      .then(response => response)
+}
+
+  const createDay = (newObject) => {
+    return axios.post(baseURL, newObject)
+        .then(response => response.data)
+}
+  
   return (
   <Segment>
     <Header as='h2' floated='right'>
