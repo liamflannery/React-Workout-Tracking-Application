@@ -68,6 +68,19 @@ const Daycontent = () => {
   const baseURL = 'https://api.example'
   const APIKey = 'api_key=example'
 
+  const fetchDays = () => {
+    axios.get(baseURL + "")
+    .then((response) => {
+      console.log("response: ", response)
+      setDays(response.data)
+    })
+  }
+
+  useEffect(() => {
+    fetchDays()
+  },[])
+
+
   const gettests = () => {
 	return axios
 		.get(
@@ -97,7 +110,25 @@ const Daycontent = () => {
     return axios.post(baseURL, newObject)
         .then(response => response.data)
 }
-  
+
+  const deleteDay = (day) => {
+    console.log("delete", day)
+    axios.delete(baseURL + day.id)
+    .then((response) => {
+      console.log("delete succeeded")
+    // delete local copy
+      const newDays = days.filter(u => u.id !== day.id)
+      setDays(newDays)
+    })
+    .catch((error) => {
+      console.log("ERROR!")
+      // refresh the list of units from the server
+      fetchDays()
+    })
+  }
+
+
+
   return (
   <Segment>
     <Header as='h2' floated='right'>
