@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 //import { useEffect, useState } from "react";
 import { Divider, Header, Image, Segment } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
-import axios from './utils/axios';
+import axios from "axios";
 
 const Daycontent = () => {
   const dayData = [
