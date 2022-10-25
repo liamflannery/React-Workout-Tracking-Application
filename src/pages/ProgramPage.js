@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../App.css';
 import { Outlet, Link } from "react-router-dom";
-import Daycontent from '../components/daycontent';
-import Muidaycontent from '../components/muidaycontent'
+import Daycontent from '../components/Daycontent';
 
 const ProgramPage = () =>{
    
