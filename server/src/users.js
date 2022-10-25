@@ -1,20 +1,20 @@
 
-const {getDatabase} = require('./mongo');
+// const {getDatabase} = require('./mongo');
 
-const collectionName = 'users';
+// const collectionName = 'users';
 
-async function insertUser(user) {
-  const database = await getDatabase();
-  const {insertedId} = await database.collection(collectionName).insertOne(ad);
-  return insertedId;
-}
+// async function insertUser(user) {
+//   const database = await getDatabase();
+//   const {insertedId} = await database.collection(collectionName).insertOne(ad);
+//   return insertedId;
+// }
 
-async function getUsers() {
-  const database = await getDatabase();
-  return await database.collection(collectionName).find({}).toArray();
-}
+// async function getUsers() {
+//   const database = await getDatabase();
+//   return await database.collection(collectionName).find({}).toArray();
+// }
 
-module.exports = {
-    insertUser,
-    getUsers,
-};
+// module.exports = {
+//     insertUser,
+//     getUsers,
+// };
