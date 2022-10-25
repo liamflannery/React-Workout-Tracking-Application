@@ -5,7 +5,15 @@ import { Outlet, Link } from "react-router-dom";
 import Daycontent from '../components/Daycontent';
 
 const ProgramPage = () =>{
-   
+    const getPrograms = async() => {
+        const programsParam = await dayService.getAllPrograms()
+        //setPrograms(programsParam.title)
+        console.log(programsParam);
+    }
+    const createProgram = async() => {
+        await dayService.addProgram("New Program")
+    }
+
         
         return (
         <div class = "container">
