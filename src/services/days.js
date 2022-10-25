@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = '/'
+const baseURL = 'http://localhost:8102/'
 
 const getUserDetails = (userName) => {
     const config = {headers: {Authorization: "Basic " + userName.token}}
@@ -9,8 +9,9 @@ const getUserDetails = (userName) => {
 }
 
 const getAllPrograms = (user) => {
-    const config = {headers: {Authorization: "Basic " + user.token}}
-    return axios.get(baseURL + 'api/programs/',config)
+    // const config = {headers: {Authorization: "Basic " + user.token}}
+    const config = null;
+    return axios.get(baseURL + 'api/program/',config)
                 .then(response => response.data)
 }
 
@@ -21,7 +22,7 @@ const getAllUsers = () => {
 
 const getDays = (user, id) => {
     const config = {headers: {Authorization: "Basic " + user.token}}
-    return axios.get(baseURL + 'api/programs/' + id,config)
+    return axios.get(baseURL + 'api/program/' + id,config)
                 .then(response => response.data)
 }
 
@@ -38,10 +39,10 @@ const postDay = (user, day, id) => {
                 .then(response => response.data)
 }
 
-const addProgram = (user, title) => {
-    const config = {headers: {Authorization: "Basic " + user.token}}
+const addProgram = (title) => {
+    
     const titleObj = {"title" : title}
-    return axios.post(baseURL + 'api/programs/', titleObj, config)
+    return axios.post(baseURL + 'api/programs/', titleObj)
                 .then(response => response.data)
 }
 
