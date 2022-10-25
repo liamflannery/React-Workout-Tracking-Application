@@ -127,7 +127,29 @@ const Daycontent = () => {
     })
   }
 
+  const getAll = () => {
+    const request = axios.get(baseURL)
+    return request.then(response => response.data)
+  }
 
+  const createProduct = async (newProduct,token) => {
+    const response = await axios.post(baseURL, newProduct, token)
+    return response.data
+  }
+  const getProductsByid = async (username) => {
+    const response = await axios.post('/api/users/getProducts', username)
+    return response.data
+  }
+
+  const updateProduct = (id, changedProduct) => {
+    const request = axios.put(`${baseURL}/${id}`, changedProduct)
+    return request.then(response => response.data)
+  }
+
+  const deleteProduct = async (id) => {
+    const response =  await axios.delete(`${baseURL}/${id}`)
+    return response.data
+  }
 
   return (
   <Segment>
