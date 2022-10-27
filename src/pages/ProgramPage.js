@@ -3,11 +3,20 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../App.css';
 import { Outlet, Link } from "react-router-dom";
 import Daycontent from '../components/daycontent';
-import Muidaycontent from '../components/muidaycontent'
+import { useOutletContext } from "react-router-dom";
 
 const ProgramPage = () =>{
-   
-        
+    const {user} = useOutletContext();
+    // const getPrograms = async() => {
+    //     const programsParam = await dayService.getAllPrograms()
+    //     //setPrograms(programsParam.title)
+    //     console.log(programsParam);
+    // }
+    // const createProgram = async() => {
+    //     await dayService.addProgram("New Program")
+    // }
+
+        console.log(user)
         return (
         <div class = "container">
             <header className="App-header">

@@ -9,6 +9,8 @@ import EditDay from './pages/EditDay';
 import Layout from './pages/Layout';
 import NavigationBar from './components/navigationBar/navigationBar';
 import LoginRegisterContainer from './components/LoginRegisterContainer/LoginRegisterContainer';
+import LoginRegisterContainer from './components/LoginRegisterContainer/LoginRegisterContainer';
+import RouteGuard from './components/RouteGuard'
 
 import {
   BrowserRouter as Router,
