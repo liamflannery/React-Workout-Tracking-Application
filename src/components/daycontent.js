@@ -6,6 +6,7 @@ import { Divider, Header, Image, Segment } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 import axios from "axios";
 import dayService from '../services/days'
+import { fontStyle } from '@mui/system';
 
 const Daycontent = () => {
   const dayData = [
@@ -202,13 +203,15 @@ const Daycontent = () => {
       {days.map((program) => {
       return(
         <Link to="/day" style={{ textDecoration: 'none' , color: 'white'}}>
-      <div className="daycontainer" style={{fontSize: '38px'}}>
+      <div className="daycontainer" style ={{fontSize: '38px'}}>
       <ul>
-
+        <div className='daytitlecontainer' style ={{fontWeight: 'bold'}}>
         <ul>{program.name}</ul>
-        
+        </div>
         <ul>
+          <div className='workoutcontainer' style={{fontStyle: 'italic'}}>
           {program.workout[0]}, {program.workout[1]} + {[program.workout.length]-2} more
+          </div>
         </ul>
       </ul>
       </div>
