@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Divider, Header, Image, Segment } from 'semantic-ui-react'
 import {Link} from "react-router-dom";
 import axios from "axios";
+import dayService from '../services/days'
 
 const Daycontent = () => {
   const dayData = [
@@ -60,111 +61,158 @@ const Daycontent = () => {
   ];
 
   const [days, setDays] = useState([]);
+  const [programs, setPrograms] = useState([]);   
+
+
+  const getPrograms = async() => {
+    const programsParam = await dayService.getAllPrograms()
+    setPrograms(programsParam.title)
+    console.log(programsParam);
+    
+  }
+  const createProgram = async() => {
+    await dayService.addProgram("New Program")
+  }
+
+  const fetchPrograms = () => {
+    axios.get("http://localhost:8000/api/program/")
+    .then((response) => {
+      console.log("response: ", response)
+      setPrograms(response.data)
+    })
+  }
 
   useEffect(() => {
     setDays(dayData);
+    getPrograms();
+    //fetchPrograms();
   }, []);
+  
+  //const getDays = async() => {
+    //const daysParam = await dayService.getDays();
+  //}
 
-  const baseURL = 'https://api.example'
-  const APIKey = 'api_key=example'
+  //const getPrograms = async() => {
+    //return axios
+      //.get("http://localhost:3000/program")
+      //.then(response => response.data)
+  //}
 
-  const fetchDays = () => {
-    axios.get(baseURL + "")
-    .then((response) => {
-      console.log("response: ", response)
-      setDays(response.data)
-    })
-  }
+  //const baseURL = 'https://api.example'
+  //const APIKey = 'api_key=example'
 
-  useEffect(() => {
-    fetchDays()
-  },[])
+  //const fetchDays = () => {
+    //axios.get("http://localhost:3000/program")
+    //.then((response) => {
+      //console.log("response: ", response)
+      //setDays(response.data)
+    //})
+  //}
+
+  //const fetchPrograms = () => {
+    //axios.get("http://localhost:8000/api/program/")
+    //.then((response) => {
+      //console.log("response: ", response)
+      //setPrograms(response.data)
+    //})
+  //}
 
 
-  const gettests = () => {
-	return axios
-		.get(
-			baseURL + `/top_rated?${APIKey}&language=en-US&page=1%27`,
-		)
-		.then(response => response.data.results)
-  }
+  //useEffect(() => {
+    //fetchDays()
+    //fetchPrograms()
+  //},[])
 
-  const gettest = (testid) => {
-	return axios
-		.get(
-			`${baseURL}/${testid}?${APIKey}&language=en-US`,
-		)
-		.then(response => response.data)
-  }
 
-  const getDays = () => {
-    return axios.get(baseURL)
-        .then(response => response)
-}
-  const getDay = (dayid) => {
-    return axios.get(`${baseURL}/${dayid}?&language=en-US`)
-      .then(response => response)
-}
+  //const gettests = () => {
+	//return axios
+		//.get(
+			//baseURL + `/top_rated?${APIKey}&language=en-US&page=1%27`,
+		//)
+		//.then(response => response.data.results)
+  //}
 
-  const createDay = (newObject) => {
-    return axios.post(baseURL, newObject)
-        .then(response => response.data)
-}
+  //const gettest = (testid) => {
+	//return axios
+		//.get(
+			//`${baseURL}/${testid}?${APIKey}&language=en-US`,
+		//)
+		//.then(response => response.data)
+  //}
 
-  const deleteDay = (day) => {
-    console.log("delete", day)
-    axios.delete(baseURL + day.id)
-    .then((response) => {
-      console.log("delete succeeded")
+  //const getDays = () => {
+    //return axios.get('http://localhost:3000/day')
+        //.then(response => response)
+//}
+  //const getDay = (dayid) => {
+    //return axios.get(`${baseURL}/${dayid}?&language=en-US`)
+      //.then(response => response)
+//}
+
+  //const createDay = (newObject) => {
+    //return axios.post(baseURL, newObject)
+        //.then(response => response.data)
+//}
+
+  //const deleteDay = (day) => {
+    //console.log("delete", day)
+    //axios.delete(baseURL + day.id)
+    //.then((response) => {
+      //console.log("delete succeeded")
     // delete local copy
-      const newDays = days.filter(u => u.id !== day.id)
-      setDays(newDays)
-    })
-    .catch((error) => {
-      console.log("ERROR!")
+      //const newDays = days.filter(u => u.id !== day.id)
+      //setDays(newDays)
+    //})
+    //.catch((error) => {
+      //console.log("ERROR!")
       // refresh the list of units from the server
-      fetchDays()
-    })
-  }
+      //fetchDays()
+    //})
+  //}
 
-  const getAll = () => {
-    const request = axios.get(baseURL)
-    return request.then(response => response.data)
-  }
+  //const testgetAll = () => {
+    //const request = axios.get(baseURL)
+    //return request.then(response => response.data)
+  //}
 
-  const createProduct = async (newProduct,token) => {
-    const response = await axios.post(baseURL, newProduct, token)
-    return response.data
-  }
-  const getProductsByid = async (username) => {
-    const response = await axios.post('/api/users/getProducts', username)
-    return response.data
-  }
+  //const testcreateday = async (newProduct,token) => {
+    //const response = await axios.post(baseURL, newProduct, token)
+    //return response.data
+  //}
+  //const testgetDayByid = async (username) => {
+    //const response = await axios.post(baseURL, username)
+    //return response.data
+  //}
 
-  const updateProduct = (id, changedProduct) => {
-    const request = axios.put(`${baseURL}/${id}`, changedProduct)
-    return request.then(response => response.data)
-  }
+  //const testupdateDay = (id, changedProduct) => {
+    //const request = axios.put(`${baseURL}/${id}`, changedProduct)
+    //return request.then(response => response.data)
+  //}
 
-  const deleteProduct = async (id) => {
-    const response =  await axios.delete(`${baseURL}/${id}`)
-    return response.data
-  }
+  //const testdeleteDay = async (id) => {
+    //const response =  await axios.delete(`${baseURL}/${id}`)
+    //return response.data
+  //}
+
 
   return (
   <Segment>
+    
     <Header as='h2' floated='right'>
-      {days.map((day) => {
+      {days.map((program) => {
       return(
+        <Link to="/day" style={{ textDecoration: 'none' , color: 'white'}}>
+      <div className="daycontainer" style={{fontSize: '38px'}}>
       <ul>
-        <Link to="/day">
-        <ul>{day.name}</ul>
-        </Link>
+
+        <ul>{program.name}</ul>
         
         <ul>
-          {day.workout[0]}, {day.workout[1]} + {[day.workout.length]-2} more
+          {program.workout[0]}, {program.workout[1]} + {[program.workout.length]-2} more
         </ul>
       </ul>
+      </div>
+      </Link>
       )
       })}
     </Header>

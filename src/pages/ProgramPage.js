@@ -3,16 +3,19 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../App.css';
 import { Outlet, Link } from "react-router-dom";
 import Daycontent from '../components/daycontent';
+import dayService from '../services/days';
 
 const ProgramPage = () =>{
-    // const getPrograms = async() => {
-    //     const programsParam = await dayService.getAllPrograms()
-    //     //setPrograms(programsParam.title)
-    //     console.log(programsParam);
-    // }
-    // const createProgram = async() => {
-    //     await dayService.addProgram("New Program")
-    // }
+    //const [programs, setPrograms] = useState([]);
+
+     //const getPrograms = async() => {
+         //const programsParam = await dayService.getAllPrograms()
+         //setPrograms(programsParam.title)
+         //console.log(programsParam);
+     //}
+     //const createProgram = async() => {
+         //await dayService.addProgram("New Program")
+     //}
 
         
         return (
