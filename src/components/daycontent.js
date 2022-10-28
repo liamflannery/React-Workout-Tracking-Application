@@ -66,22 +66,24 @@ const Daycontent = () => {
 
 
   const getPrograms = async() => {
-    const programsParam = await dayService.getAllPrograms()
-    setPrograms(programsParam.title)
-    console.log(programsParam);
+    const programsParam = await dayService.getAllPrograms().programs
+    const programsParam2 = await dayService.getAllPrograms()
+    setPrograms(programsParam2.programs.programs)
+    console.log("PROGRAMS PARAM");//, programsParam);
+    console.log(programsParam2.programs.programs)
     
   }
   const createProgram = async() => {
     await dayService.addProgram("New Program")
   }
 
-  const fetchPrograms = () => {
-    axios.get("http://localhost:8000/api/program/")
-    .then((response) => {
-      console.log("response: ", response)
-      setPrograms(response.data)
-    })
-  }
+  //const fetchPrograms = () => {
+    //axios.get("http://localhost:8000/api/program/")
+    //.then((response) => {
+      //console.log("response: ", response)
+      //setPrograms(response.data)
+    //})
+  //}
 
   useEffect(() => {
     setDays(dayData);
@@ -200,17 +202,17 @@ const Daycontent = () => {
   <Segment>
     
     <Header as='h2' floated='right'>
-      {days.map((program) => {
+      {programs.map((program) => {
       return(
         <Link to="/day" style={{ textDecoration: 'none' , color: 'white'}}>
       <div className="daycontainer" style ={{fontSize: '38px'}}>
       <ul>
         <div className='daytitlecontainer' style ={{fontWeight: 'bold'}}>
-        <ul>{program.name}</ul>
+        <ul>{program.title}</ul>
         </div>
         <ul>
           <div className='workoutcontainer' style={{fontStyle: 'italic'}}>
-          {program.workout[0]}, {program.workout[1]} + {[program.workout.length]-2} more
+          {program.days[0]}, {program.days[1]} + {[program.days.length]-2} more
           </div>
         </ul>
       </ul>

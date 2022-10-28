@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = 'http://localhost:8102/'
+const baseURL = 'http://localhost:8000/'
 
 const getUserDetails = (userName) => {
     const config = {headers: {Authorization: "Basic " + userName.token}}
@@ -10,8 +10,7 @@ const getUserDetails = (userName) => {
 
 const getAllPrograms = (user) => {
     // const config = {headers: {Authorization: "Basic " + user.token}}
-    const config = null;
-    return axios.get(baseURL + 'api/program/',config)
+    return axios.get(baseURL + 'api/program/')
                 .then(response => response.data)
 }
 

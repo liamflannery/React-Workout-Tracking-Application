@@ -12,10 +12,11 @@ const config = require('./config')
 const app = express()
 app.use(morgan('dev'))
 app.use(express.json())
-app.use(cors({
-  credentials: true,
-  origin: config.corsClientDomain
-}))
+//app.use(cors({
+  //credentials: true,
+  //origin: config.corsClientDomain
+//}))
+app.use(cors())
 
 
 
