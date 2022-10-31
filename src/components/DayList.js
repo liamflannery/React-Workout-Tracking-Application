@@ -28,7 +28,7 @@ const DayList = () =>{
         
         return (
        
-        <div className="App">
+        
           <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="days">
               {(provided) => (
@@ -54,7 +54,7 @@ const DayList = () =>{
               )}
             </Droppable>
           </DragDropContext>
-      </div>         
+      
         );
         
 }

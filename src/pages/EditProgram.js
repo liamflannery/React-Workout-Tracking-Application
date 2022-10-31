@@ -18,6 +18,7 @@ const WorkoutPage = () =>{
                         <div class="seven columns">
                         <input class="u-full-width" type="email" placeholder="Push Pull Legs" id="exampleEmailInput"/>
                         <label for="exampleDay">Days</label>
+                            <DayList/>
                         </div>
                         <div class="five columns">
                         <label for="exampleRecipientInput">Days</label>
