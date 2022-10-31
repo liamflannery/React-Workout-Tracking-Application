@@ -77,6 +77,14 @@ const Daycontent = () => {
     await dayService.addProgram("New Program")
   }
 
+  const getDays = async() => {
+    const daysParam = await dayService.getDays(1)
+    setDays(daysParam)
+    console.log("DAYS PARAM");
+    console.log(daysParam)
+    
+  }
+
   //const fetchPrograms = () => {
     //axios.get("http://localhost:8000/api/program/")
     //.then((response) => {
@@ -86,8 +94,9 @@ const Daycontent = () => {
   //}
 
   useEffect(() => {
-    setDays(dayData);
+    //setDays(dayData);
     getPrograms();
+    getDays();
     //fetchPrograms();
   }, []);
   
@@ -203,6 +212,8 @@ const Daycontent = () => {
     
     <Header as='h2' floated='right'>
       {programs.map((program) => {
+
+        
       return(
         <Link to="/day" style={{ textDecoration: 'none' , color: 'white'}}>
       <div className="daycontainer" style ={{fontSize: '38px'}}>
@@ -214,8 +225,9 @@ const Daycontent = () => {
           <div className='workoutcontainer' style={{fontStyle: 'italic'}}>
           {program.days[0]}, {program.days[1]} + {[program.days.length]-2} more
           </div>
+          
         </ul>
-      </ul>
+      </ul> 
       </div>
       </Link>
       )

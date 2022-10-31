@@ -19,9 +19,9 @@ const getAllUsers = () => {
     .then(response => response.data)
 }
 
-const getDays = (user, id) => {
-    const config = {headers: {Authorization: "Basic " + user.token}}
-    return axios.get(baseURL + 'api/program/' + id,config)
+const getDays = (id) => {
+    //const config = {headers: {Authorization: "Basic " + user.token}}
+    return axios.get(baseURL + 'api/program/' + id)
                 .then(response => response.data)
 }
 
