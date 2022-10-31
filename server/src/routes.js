@@ -1,6 +1,7 @@
 const express = require('express')
 const program = require('./controllers/programs')
 const days = require('./controllers/days')
+const exercises = require('./controllers/exercises')
 
 const router = express.Router()
  
@@ -20,7 +21,7 @@ router.post('/api/program', program.createProgram)
 // router.get('/api/program/:id', days.getDays)
 
 /* POST to a program to create a new day */
-router.post('/api/program/:id', days.createDay)
+//router.post('/api/program/:id', days.createDay)
 
 /* GET a day URL to get details of a day */
 router.get('/api/program/:id', program.getProgram)
@@ -28,5 +29,16 @@ router.get('/api/program/:id', program.getProgram)
 // /* DELETE to day URL to delete the day */
 // router.delete('/api/program/:id/:dayid', days.deleteDay)
 
+router.get('/api/day', days.getDays)
+
+router.get('/api/day/:id', days.getDay)
+
+router.post('/api/day', days.createDay)
+
+router.get('/api/exercise', exercises.getExercises)
+
+router.get('/api/exercise/:id', exercises.getExercise)
+
+//router.post('/api/exercise', exercises.createExercise)
 
 module.exports = router 

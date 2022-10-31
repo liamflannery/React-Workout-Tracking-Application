@@ -63,6 +63,7 @@ const Daycontent = () => {
 
   const [days, setDays] = useState([]);
   const [programs, setPrograms] = useState([]);   
+  const [exercises, setExercise] = useState([]);   
 
 
   const getPrograms = async() => {
@@ -78,10 +79,18 @@ const Daycontent = () => {
   }
 
   const getDays = async() => {
-    const daysParam = await dayService.getDays(1)
-    setDays(daysParam)
+    const daysParam = await dayService.getAllDays()
+    setDays(daysParam.days.days)
     console.log("DAYS PARAM");
-    console.log(daysParam)
+    console.log(daysParam.days.days)
+    
+  }
+
+  const getExercises= async() => {
+    const exercisesParam = await dayService.getAllExercises()
+    setExercise(exercisesParam.exercises.exercises)
+    console.log("EXERCISES PARAM");
+    console.log(exercisesParam.exercises.exercises)
     
   }
 
@@ -97,6 +106,7 @@ const Daycontent = () => {
     //setDays(dayData);
     getPrograms();
     getDays();
+    getExercises();
     //fetchPrograms();
   }, []);
   
@@ -211,19 +221,18 @@ const Daycontent = () => {
   <Segment>
     
     <Header as='h2' floated='right'>
-      {programs.map((program) => {
-
-        
+    {exercises.map((exercise) => {
+      {days.map((day) => {
       return(
         <Link to="/day" style={{ textDecoration: 'none' , color: 'white'}}>
       <div className="daycontainer" style ={{fontSize: '38px'}}>
       <ul>
         <div className='daytitlecontainer' style ={{fontWeight: 'bold'}}>
-        <ul>{program.title}</ul>
+        <ul>{day.title}</ul>
         </div>
         <ul>
           <div className='workoutcontainer' style={{fontStyle: 'italic'}}>
-          {program.days[0]}, {program.days[1]} + {[program.days.length]-2} more
+          {day.title[0]}, {day.title[1]} + {[day.title.length]-2} more
           </div>
           
         </ul>
@@ -231,6 +240,7 @@ const Daycontent = () => {
       </div>
       </Link>
       )
+    })}
       })}
     </Header>
     <Divider clearing />
