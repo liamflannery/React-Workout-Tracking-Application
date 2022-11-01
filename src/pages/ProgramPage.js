@@ -4,22 +4,21 @@ import '../App.css';
 import { Outlet, Link } from "react-router-dom";
 import Daycontent from '../components/daycontent';
 import dayService from '../services/days';
+import { useOutletContext } from "react-router-dom";
 
 const ProgramPage = () =>{
-    //const [programs, setPrograms] = useState([]);
+    const {user} = useOutletContext();
+    // const getPrograms = async() => {
+    //     const programsParam = await dayService.getAllPrograms()
+    //     //setPrograms(programsParam.title)
+    //     console.log(programsParam);
+    // }
+    // const createProgram = async() => {
+    //     await dayService.addProgram("New Program")
+    // }
 
-     //const getPrograms = async() => {
-         //const programsParam = await dayService.getAllPrograms()
-         //setPrograms(programsParam.title)
-         //console.log(programsParam);
-     //}
-     //const createProgram = async() => {
-         //await dayService.addProgram("New Program")
-     //}
-
-        
         return (
-        <div class = "container">
+        <div className= "container">
             <header className="App-header">
                 <h1>Program Page</h1>
                 <Daycontent/>

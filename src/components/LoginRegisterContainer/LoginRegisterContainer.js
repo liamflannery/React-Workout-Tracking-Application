@@ -1,7 +1,7 @@
 //import the css
 import { useRef, useState } from "react";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
+import Login from "../../pages/Landing/Login";
+import Register from "../../pages/Landing/Register";
 import "./LoginRegisterContainer.css";
 
 

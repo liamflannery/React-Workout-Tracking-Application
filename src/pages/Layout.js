@@ -4,9 +4,9 @@ const Layout = () => {
   return (
     <>
       <Outlet />
-      <nav>
+      {/* <nav> */}
         <MenuBar />
-      </nav>
+      {/* </nav> */}
       
     </>
   )
