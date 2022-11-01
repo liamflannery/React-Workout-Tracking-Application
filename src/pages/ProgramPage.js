@@ -22,9 +22,8 @@ const ProgramPage = () =>{
         <div class = "container">
             <header className="App-header">
                 <h1>Program Page</h1>
-                <Daycontent/>
-                <Link to="/day">
-                </Link>
+               
+                <Link to="/day"> Go TO Day</Link>
             </header>
         </div>
             

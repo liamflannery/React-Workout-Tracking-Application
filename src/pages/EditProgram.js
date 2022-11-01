@@ -34,6 +34,23 @@ const EditProgram = () => {
       thumb: '/images/dumbell.png'
     }
 ]
+const testfrombackend = [
+  {
+    id: uuid(),
+    title: 'fronddat',
+    thumb: '/images/dumbell.png'
+  },
+  {
+      id: uuid(),
+      title: 'Tuesday',
+      thumb: '/images/dumbell.png'
+  },
+  {
+    id: uuid(),
+    title: 'Wed',
+    thumb: '/images/dumbell.png'
+  }
+]
   const [programDays, setProgramDays] = useState(itemsFromBackend)
   const [allDays, setAllDays] = useState([])
       
@@ -50,21 +67,23 @@ const EditProgram = () => {
   };
   
   const [columns, setColumns] = useState(columnsFromBackend);
+  const updateColumns = (newColumn) => {
+    setColumns(newColumn)
+    setProgramDays(Object.entries(newColumn)[0][1].items)
+    setAllDays(Object.entries(newColumn)[1][1].items)
+  }
+  const[testState, setTestState] = useState(["nice"])
   const getDays = async() => {
     const daysParam = await dayService.getAllDays()
-    setProgramDays([""])
-
-    console.log(programDays);
+    setProgramDays(daysParam.days.days)
 }
-useEffect(() => {
-  console.log("test")
-});
+
 
   return (
     <div class = "container">
     <header className="App-header">
     <DragDropContext
-        onDragEnd={result => OnDragEnd(result, columns, setColumns)}
+        onDragEnd={result => OnDragEnd(result, columns, updateColumns)}
       >
     <h1> Program Page</h1>
                 
@@ -72,11 +91,11 @@ useEffect(() => {
                         <div class="seven columns">
                         <input class="u-full-width" type="email" placeholder="Enter program name..." id="exampleEmailInput"/>
                         <label for="exampleDay">Program Days</label>
-                        <EditBox columnId = {Object.entries(columns)[1][0]} column = {Object.entries(columns)[1][1]} />
+                        <EditBox columnId = {Object.entries(columns)[0][0]} column = {Object.entries(columns)[0][1]} />
                         </div>
                         <div class="five columns">
                         <label for="exampleRecipientInput">All Days</label>
-                          <EditBox columnId = {Object.entries(columns)[0][0]} column = {Object.entries(columns)[0][1]} />
+                          <EditBox columnId = {Object.entries(columns)[1][0]} column = {Object.entries(columns)[1][1]} />
                             <input class="button-primary" type="submit" value="+Day"/>
                         </div>
                        
@@ -84,7 +103,12 @@ useEffect(() => {
                    
                    
                    
-                    <button onClick={() => {setProgramDays([])}}>Get Days</button>
+                    <button onClick={() => {getDays()}}>Get Days</button>
+                    <button onClick={() => {console.log(allDays)}}>Print All Days</button>
+                    <button onClick={() => {console.log(programDays)}}>Print Program Days</button>
+                    <button onClick={() => {console.log(columns)}}>Print Columns</button>
+                    <button onClick={() => {setProgramDays(testfrombackend)}}>Update Test</button>
+                    <button onClick={() => {setColumns(columnsFromBackend)}}>Update Columns</button>
                     
                   
  

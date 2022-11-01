@@ -29,9 +29,10 @@ const EditBox = (props) => {
                   >
                     {props.column.items.map((item, index) => {
                       return (
+                        
                         <Draggable
                           key={item.id}
-                          draggableId={item.id}
+                          draggableId={item.id.toString()}
                           index={index}
                         >
                           {(provided, snapshot) => {
