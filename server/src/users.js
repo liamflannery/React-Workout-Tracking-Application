@@ -18,13 +18,23 @@ async function insertUser(req, res) {
 
     user
         .save(user)
-        .then(data => {
-            res.send(data);
+        .then(user => {
+            // res.send(data);
+            let u = {
+                id: user.id,
+                username: user.userName
+            }
+            token = jwt.sign(u, process.env.JWT_SECRET, {
+                expiresIn: 60 * 60 * 24 // expires in 24 hours
+             });
+            return res.send({
+                token: token
+            })
         })
         .catch(err => {
             console.log(err)
             res.status(500).send({
-                message: "Invalid request"
+                message: "Invalid username or password"
             });
         });
 }
@@ -51,14 +61,14 @@ async function getUser(req, res) {
                 })
             } else {
                 res.status(401).send({
-                    message: "Invalid request"
+                    message: "Invalid username or password"
                 });
             }
         });
     } else {
-        res.status(404).json({ message: "User not found" })
+        res.status(404).json({ message: "Invalid username or password" })
         res.status(404)
-        throw new Error('User not found')
+        throw new Error("Invalid username or password")
     }
 }
 

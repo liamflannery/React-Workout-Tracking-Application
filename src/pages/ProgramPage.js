@@ -16,9 +16,8 @@ const ProgramPage = () =>{
     //     await dayService.addProgram("New Program")
     // }
 
-        console.log(user)
         return (
-        <div class = "container">
+        <div className= "container">
             <header className="App-header">
                 <h1>Program Page</h1>
                 <Daycontent/>

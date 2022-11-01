@@ -33,7 +33,7 @@
 }
 .login-register-container  .side-div button {
     /* padding: 10px 20px; */
-    background-color: #ff0;
+    background-color: #2074d4;
     color: #000;
     border: 1px solid #000;
     cursor: pointer;
@@ -41,6 +41,6 @@
     transition: 0.7s linear;
 }
 .login-register-container  .side-div button:hover{
-    background-color: rgb(231, 228, 161);
+    background-color: rgb(204, 223, 245, 1);
     border: 1px solid rgb(55, 54, 54);
 }

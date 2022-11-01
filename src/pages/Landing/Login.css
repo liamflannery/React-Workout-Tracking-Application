@@ -52,7 +52,7 @@
     transition: 0.3s linear;
 }
 .login form button:hover{
-    background: #ff0;
+    background: #2074d4;
     color: #000;
     border: 1px solid rgb(55, 54, 54);
 }
@@ -61,4 +61,7 @@
     color: rgb(68, 65, 65);
     font-weight: lighter;
 
+}
+.error {
+    color: red;
 }

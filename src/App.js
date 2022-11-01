@@ -9,7 +9,6 @@ import EditDay from './pages/EditDay';
 import Layout from './pages/Layout';
 import NavigationBar from './components/navigationBar/navigationBar';
 import LoginRegisterContainer from './components/LoginRegisterContainer/LoginRegisterContainer';
-import LoginRegisterContainer from './components/LoginRegisterContainer/LoginRegisterContainer';
 import RouteGuard from './components/RouteGuard'
 
 import {
@@ -24,7 +23,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<Layout />} >
                   <Route index element={<LoginRegisterContainer/>}/>
-                  <Route path="program" element={<ProgramPage/>} />
+                  <Route element={<RouteGuard />}>
+                    <Route path="program" element={<ProgramPage/>} />
+                  </Route>
                   <Route path="day" element={<DayPage/>} />
                   <Route path="edit" element={<ProgramManager/>} />
                   <Route path="edit/program" element={<EditProgram/>} />
