@@ -3,6 +3,7 @@
       {
         "id": 0,
         "title": "Day 1",
+        "thumb": "/images/dumbell.png",
         "exercises": [
           2, 0
         ]
@@ -10,6 +11,7 @@
       {
         "id": 1,
         "title": "Day 2",
+        "thumb": "/images/dumbell.png",
         "exercises": [
           0, 1
         ]
@@ -17,6 +19,7 @@
       {
         "id": 2,
         "title": "Day 3",
+        "thumb": "/images/dumbell.png",
         "exercises": [
           0, 1
         ]

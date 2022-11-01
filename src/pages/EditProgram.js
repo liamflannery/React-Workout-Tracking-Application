@@ -1,94 +1,96 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { v4 as uuid } from 'uuid';
-import EditBox from "./EditBox";
-const itemsFromBackend = [
+import EditBox from "../components/EditBox";
+import OnDragEnd from "../components/OnDragEnd";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import DayList from '../components/DayList';
+import dayService from '../services/days';
+
+
+
+
+
+const EditProgram = () => {
+  
+  const navigate = useNavigate()
+  const editDay = () => {
+      navigate('/edit/day')
+  }
+  const itemsFromBackend = [
     {
       id: uuid(),
-      name: 'Monday',
+      title: 'Monday',
       thumb: '/images/dumbell.png'
     },
     {
         id: uuid(),
-        name: 'Tuesday',
+        title: 'Tuesday',
         thumb: '/images/dumbell.png'
+    },
+    {
+      id: uuid(),
+      title: 'Wed',
+      thumb: '/images/dumbell.png'
     }
 ]
+  const [programDays, setProgramDays] = useState(itemsFromBackend)
+  const [allDays, setAllDays] = useState([])
+      
+  const columnsFromBackend = {
+    [uuid()]: {
+      title: "Program Days",
+      items: programDays
+    },
+    [uuid()]: {
+      title: "All Days",
+      items: allDays
+    },
 
-const columnsFromBackend = {
-  [uuid()]: {
-    name: "Program Days",
-    items: itemsFromBackend
-  },
-  [uuid()]: {
-    name: "Days List",
-    items: []
-  },
-
-};
-
-const onDragEnd = (result, columns, setColumns) => {
-  if (!result.destination) return;
-  const { source, destination } = result;
-
-  if (source.droppableId !== destination.droppableId) {
-    const sourceColumn = columns[source.droppableId];
-    const destColumn = columns[destination.droppableId];
-    const sourceItems = [...sourceColumn.items];
-    const destItems = [...destColumn.items];
-    const [removed] = sourceItems.splice(source.index, 1);
-    destItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems
-      }
-    });
-  } else {
-    const column = columns[source.droppableId];
-    const copiedItems = [...column.items];
-    const [removed] = copiedItems.splice(source.index, 1);
-    copiedItems.splice(destination.index, 0, removed);
-    setColumns({
-      ...columns,
-      [source.droppableId]: {
-        ...column,
-        items: copiedItems
-      }
-    });
-  }
-};
-
-function EditProgram() {
-  const [columns, setColumns] = useState(columnsFromBackend);
+  };
   
+  const [columns, setColumns] = useState(columnsFromBackend);
+  const getDays = async() => {
+    const daysParam = await dayService.getAllDays()
+    setProgramDays([""])
+
+    console.log(programDays);
+}
+useEffect(() => {
+  console.log("test")
+});
+
   return (
     <div class = "container">
     <header className="App-header">
-      <DragDropContext
-        onDragEnd={result => onDragEnd(result, columns, setColumns)}
+    <DragDropContext
+        onDragEnd={result => OnDragEnd(result, columns, setColumns)}
       >
-        {Object.entries(columns).map(([columnId, column], index) => {
-            // return(
-            //     <div
+    <h1> Program Page</h1>
+                
+                    <div class="row">
+                        <div class="seven columns">
+                        <input class="u-full-width" type="email" placeholder="Enter program name..." id="exampleEmailInput"/>
+                        <label for="exampleDay">Program Days</label>
+                        <EditBox columnId = {Object.entries(columns)[1][0]} column = {Object.entries(columns)[1][1]} />
+                        </div>
+                        <div class="five columns">
+                        <label for="exampleRecipientInput">All Days</label>
+                          <EditBox columnId = {Object.entries(columns)[0][0]} column = {Object.entries(columns)[0][1]} />
+                            <input class="button-primary" type="submit" value="+Day"/>
+                        </div>
+                       
+                    </div>
+                   
+                   
+                   
+                    <button onClick={() => {setProgramDays([])}}>Get Days</button>
+                    
+                  
  
-            //     key={columnId}
-            //   >
-            //     <EditProgram columnId = {columnId} column = {column} index = {index} />
-            //     </div>
-            // )
-            return(
-                <EditBox columnId = {columnId} column = {column} index = {index} />
-            )
-  
-            // editBox(columnId, column, index)
-          
-        })}
+        
+        
+       
       </DragDropContext>
       </header>
     </div>

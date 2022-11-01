@@ -1,4 +1,6 @@
-
+const fs = require('fs')
+let rawdata = fs.readFileSync('server/src/data/days.json')
+let days = JSON.parse(rawdata);
 
 const createDay = async (request, response) => {
 
@@ -17,8 +19,12 @@ const createDay = async (request, response) => {
 
 }
 
+const getDays = async (request, response) => {
+    
+    response.json({days})
 
+}
 
 module.exports = {
-    createDay
+    createDay, getDays
 }
