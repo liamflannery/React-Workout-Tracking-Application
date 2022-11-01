@@ -69,10 +69,17 @@ const getAllExercises = (user) => {
                 .then(response => response.data)
 }
 
+const getExercise = (id) => {
+    // const config = {headers: {Authorization: "Basic " + user.token}}
+    return axios.get(baseURL + 'api/exercise/' + id)
+                .then(response => response.data)
+}
+
+
 const addExercise = (title) => {
     const titleObj = {"title" : title}
     return axios.post(baseURL + 'api/exercise/', titleObj)
                 .then(response => response.data)
 }
 
-export default {getUserDetails, getAllPrograms, register, addProgram, getAllUsers, getAllDays, addDay, getAllExercises, addExercise}
+export default {getUserDetails, getAllPrograms, register, addProgram, getAllUsers, getAllDays, addDay, getAllExercises, addExercise, getExercise}
