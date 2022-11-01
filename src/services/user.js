@@ -52,3 +52,4 @@ const doRegister = (userName, password) => {
 }
 
 export default {doLogin, doRegister}
+

@@ -2,149 +2,136 @@
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useState} from 'react';
+import { Component } from "react";
+import Excercises from "./Excercise";
 
 
-const DayPage = () => {
+class DayPage extends Component {
    
-    const Workout = [
-        {
-           
-          id: "set",
-          name: "Sets:",
-         input:'text'
-        },
-        {
-            id: "rep",
-            name: "Reps:",
-            input:'text'
-         
-        },
-        {
-            id: "weight",
-          name: "Weight:",
-          input:'text'
-          
-        },
-      ];
-      
-      const handleSubmit = event => {
-        event.preventDefault();
-        alert('You have submitted the form.')
-      }
-     
-      
-const [value,setValue]=useState('');
-const handleSelect=(e)=>{
-   console.log(e);
-   setValue(e)
-}
+  constructor(props) {
+    super(props);
+    this.state = { expandedRows: [] };
+  }
 
+  handleExpand = Excercise => {
+    let newExpandedRows = [...this.state.expandedRows];
+    let allExpanded = this.state.allExpanded;
+    let idxFound = newExpandedRows.findIndex(id => {
+      return id === Excercise.id;
+    });
 
-return (
-    
-    <div class = "App.container">
-<DropdownButton
-      
-title="Day 1 Workout"
-id="dropdown-menu-align-right"
-onSelect={handleSelect}
->
+    if (idxFound > -1) {
+      console.log("Collapsing " + Excercise.Workout + " " + idxFound);
+      newExpandedRows.splice(idxFound, 1);
+    } else {
+      console.log("Expanding " + Excercise.Workout);
+      newExpandedRows.push(Excercise.id);
+    }
 
-      <Dropdown.Item eventKey="Bench Press">Bench Press</Dropdown.Item>
-      
-      <Dropdown.Item eventKey="Incline Bench Press">Incline Bench Press</Dropdown.Item>
-      
-      <Dropdown.Item eventKey="Cable Fly's">Cable Fly's</Dropdown.Item>
+    console.log("Expanded rows");
+    console.log(newExpandedRows);
+
+    this.setState({ expandedRows: [...newExpandedRows] });
+  };
+
+  isExpanded = Excercise => {
+    const idx = this.state.expandedRows.find(id => {
+      return id === Excercise.id;
+    });
+
+    return idx > -1;
+  };
+
+  expandAll = Excercises => {
+    console.log("ExapndedRows: " + this.state.expandedRows.length);
+    console.log("Excercises:      " + Excercises.length);
+    if (this.state.expandedRows.length === Excercises.length) {
+      let newExpandedRows = [];
+      this.setState({ expandedRows: [...newExpandedRows] });
+      console.log("Collapsing all...");
+    } else {
+      let newExpandedRows = Excercises.map(Excercise => Excercise.id);
+      this.setState({ expandedRows: [...newExpandedRows] });
+      console.log("Expanding all...");
+      console.log("Expanded rows " + newExpandedRows.length);
+    }
+  };
+
+  getRows = Excercise => {
+    let rows = [];
+    const projects = Excercise.projects || [];
+
+    const firstRow = (
+      <tr>
+        <td>{Excercise.Workout}</td>
         
-      <Dropdown.Item eventKey="Overhead Press">Overhead Press</Dropdown.Item>
-      
-</DropdownButton>
-<h4> {value}</h4> 
+        <td>
+          {projects.length > 0 && (
+            <button onClick={() => this.handleExpand(Excercise)}>
+              {this.isExpanded(Excercise) ? "-" : "+"}
+            </button>
+          )}
+        </td>
+      </tr>
+    );
 
+    rows.push(firstRow);
 
- <div className="wrapper">
+    if (this.isExpanded(Excercise) && projects.length > 0) {
+      const projectRows = projects.map(project => (
+        <tr className="Excercise-details">
+          <td className="Excercise-details" />
+          <td colspan="3" className="Excercise-details">
+            <br />
+            <div className="attribute">
+              <div className="attribute-name">Reps: 8 </div>
+             
 
- <form onSubmit={handleSubmit}>
-   <fieldset>
-     <label>
-      
-       <p>Reps</p>
-       <input name1="Reps" />
-       
-       <p2>Weight</p2>
-       <input name2="Weight" /> 
-     </label>
-   </fieldset>
-   <div class="main">Completed
-        <input type="checkbox"/>
-        <span class="mark"></span>
-    </div>
-   <button type="submit">Submit</button>
-  
- </form>
- 
-</div>
-<div className="wrapper2">
-<form onSubmit={handleSubmit}>
-   <fieldset>
-     <label>
-      
-       <p>Reps</p>
-       <input name1="Reps" />
-      
-       <p2>Weight</p2>
-       <input name2="Weight" /> 
-     </label>
-   </fieldset>
-   <button type="submit">Submit</button>
- </form>
- <div class="main">Completed
-        <input type="checkbox"/>
-        <span class="mark"></span>
-    </div>
-</div>
-<div className="wrapper3">
-<form onSubmit={handleSubmit}>
-   <fieldset>
-     <label>
-      
-       <p>Reps</p>
-       <input name1="Reps" />
+              <div className="attribute-value">{project.weight}</div>
+              <input type="checkbox" />
+            </div>
+            <br />
+          </td>
+        </tr>
+      ));
+
+      rows.push(projectRows);
+    }
+
+    return rows;
+  };
+
+  getExcerciseTable = Excercises => {
+    const ExcerciseRows = Excercises.map(Excercise => {
+      return this.getRows(Excercise);
+    });
+
+    return (
      
-       <p2>Weight</p2>
-       <input name2="Weight" /> 
-     </label>
-   </fieldset>
-   <div class="main">Completed
-        <input type="checkbox"/>
-        <span class="mark"></span>
-    </div>
-   <button type="submit">Submit</button>
- </form>
-</div>
-<div className="wrapper4">
-<form onSubmit={handleSubmit}>
-   <fieldset>
-     <label>
       
-       <p>Reps</p>
-       <input name1="Reps" />
-      
-       <p2>Weight</p2>
-       <input name2="Weight" /> 
-     </label>
-   </fieldset>
-   <div class="main">Completed
-        <input type="checkbox"/>
-        <span class="mark"></span>
-    </div>
-   <button type="submit">Submit</button>
-  
- </form>
-</div>
-</div>
+      <table className="my-table">
+        <h1>Day 1</h1>
+        <tr>
+          <th>Excercises</th>
+          
+          
+          <th onClick={() => this.expandAll(Excercises)}>
+            <button>
+              {Excercises.length === this.state.expandedRows.length ? "-" : "+"}
+            </button>
+          </th>
+        </tr>
+        {ExcerciseRows}
+      </table>
+    );
+  };
 
-);
+  render() {
+    return <div>{this.getExcerciseTable(Excercises)}</div>;
+  }
 }
+
+
+
 
 export default DayPage

@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../App.css';
 import { Outlet, Link } from "react-router-dom";
 import Daycontent from '../components/daycontent';
+import dayService from '../services/days';
 import { useOutletContext } from "react-router-dom";
 
 const ProgramPage = () =>{
@@ -20,8 +21,6 @@ const ProgramPage = () =>{
         <div className= "container">
             <header className="App-header">
                 <h1>Program Page</h1>
-                <Daycontent/>
-                <Daycontent/>
                 <Daycontent/>
                 <Link to="/day">
                 </Link>
