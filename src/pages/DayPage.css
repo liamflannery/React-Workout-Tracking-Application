@@ -1,0 +1,40 @@
+h1 {
+   
+    padding-right: 25px;
+}
+  
+.container{
+   background-color: lightblue;
+    text-align: center;
+}
+.Collapsible {
+        background-color: lightblue;
+        color: rgb(91, 16, 16);
+        cursor: pointer;
+        padding: 18px;
+        width: 150%;
+        border: none;
+        text-align: center;
+        outline: none;
+        font-size: 15px;
+  }
+  p{
+    font-size: 20px;
+    right: 150px;  
+  }
+  th{
+    text-align: center;
+padding-right:50px;
+
+
+  }
+  table{
+  border: 1px solid #cccccc;
+
+  }
+  tr{
+      font-size: 20px;
+      
+  
+    text-align: center;
+  }
