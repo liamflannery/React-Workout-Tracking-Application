@@ -14,6 +14,21 @@ const getAllPrograms = (user) => {
     return axios.get(baseURL + 'api/program/',config)
                 .then(response => response.data)
 }
+const getProgram = (id) => {
+    return axios.get(baseURL + 'api/program/' + id)
+                .then(response => response.data)
+}
+
+const getAllDays= (user) => {
+    // const config = {headers: {Authorization: "Basic " + user.token}}
+    const config = null;
+    return axios.get(baseURL + 'api/day/',config)
+                .then(response => response.data)
+}
+const getDay = (id) => {
+    return axios.get(baseURL + 'api/day/' + id)
+                .then(response => response.data)
+}
 
 const getAllUsers = () => {
     return axios.get(baseURL + 'auth/users/')
@@ -52,7 +67,10 @@ const deleteDay = (user, convId, dayId) => {
     .then(response => response.data)
 }
 
+const updateProgram = (id, days) => {
+    return axios.put(baseURL + 'api/program/' + id, days)
+}
 
 
 
-export default {getUserDetails, getAllPrograms, register, getDays, postDay, addProgram, deleteDay, getAllUsers}
+export default {getUserDetails, getAllPrograms, getAllDays, register, getDays, postDay, addProgram, deleteDay, getAllUsers, getProgram, getDay, updateProgram}

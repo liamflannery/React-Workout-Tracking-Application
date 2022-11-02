@@ -31,6 +31,12 @@ router.post('/api/program/:id', days.createDay)
 /* GET a day URL to get details of a day */
 router.get('/api/program/:id', program.getProgram)
 
+router.get('/api/day', days.getDays)
+
+router.get('/api/day/:id', days.getDay)
+
+router.put('/api/program/:id', program.updateProgram)
+
 // /* DELETE to day URL to delete the day */
 // router.delete('/api/program/:id/:dayid', days.deleteDay)
 

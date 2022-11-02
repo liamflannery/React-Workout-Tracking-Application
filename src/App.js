@@ -28,7 +28,7 @@ function App() {
                   </Route>
                   <Route path="day" element={<DayPage/>} />
                   <Route path="edit" element={<ProgramManager/>} />
-                  <Route path="edit/program" element={<EditProgram/>} />
+                  <Route path="edit/program/:id" element={<EditProgram/>} />
                   <Route path="edit/day" element={<EditDay/>} />  
                   
                 </Route>
