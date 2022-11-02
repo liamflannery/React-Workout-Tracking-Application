@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../App.css';
-import ExerciseList from '../components/ExerciseList';
+import ExerciseList from '../components/editComponents/ExerciseList';
 const EditDay = () =>{
    
         

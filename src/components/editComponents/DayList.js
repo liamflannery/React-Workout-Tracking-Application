@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import '../App.css';
+import '../../App.css';
 import { v4 as uuid } from 'uuid';
 const DayList = (props) =>{
    

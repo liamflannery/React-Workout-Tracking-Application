@@ -1,5 +1,5 @@
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import '../App.css'
+import '../../App.css'
 const EditBox = (props) => {
 
     return (
