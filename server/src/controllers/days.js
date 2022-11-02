@@ -24,7 +24,21 @@ const getDays = async (request, response) => {
     response.json({days})
 
 }
+const getDay = async (request, res) => {
+    const id = Number(request.params.id)
+    
+    const day = days.days.filter(p => p.id === id)
+    // return a 404 if there is no such unit
+    if (day) {
+      res.json(day)
+    } else {
+      res.status(404)
+      res.send("<h1>Program not found.</h1>")
+    }
+    
+
+}
 
 module.exports = {
-    createDay, getDays
+    createDay, getDays, getDay
 }
