@@ -9,7 +9,9 @@ const ProgramManager = () =>{
         <div class = "container">
             <header className="App-header">
                 <h1>Program Manager</h1>
-                <Link to="/edit/program">Edit Program 1</Link>
+                <Link to="/edit/program/0">Edit Program 1</Link>
+                <Link to="/edit/program/1">Edit Program 2</Link>
+                <Link to="/edit/program/2">Edit Program 3</Link>
             </header>
         </div>
             
