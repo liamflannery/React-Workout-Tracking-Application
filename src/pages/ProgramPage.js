@@ -22,7 +22,7 @@ const ProgramPage = () =>{
             <header className="App-header">
                 <h1>Program Page</h1>
                
-                <Link to="/day"> Go TO Day</Link>
+                <Daycontent/>
             </header>
         </div>
             

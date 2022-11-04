@@ -2,7 +2,9 @@ const express = require('express')
 
 const program = require('./controllers/programs')
 const days = require('./controllers/days')
+const exercises = require('./controllers/exercises')
 const users = require('./users')
+
 const authenticateToken = require('./auth')
 
 const router = express.Router()
@@ -18,6 +20,8 @@ router.get('/api/user/:id', authenticateToken, users.getUserDetail)
 
 /* GET programs returns a list of all current programs */
 router.get('/api/program', program.getPrograms)
+
+router.get('/api/exercise', exercises.getExercises)
 
 /* POST to programs creates a new program */
 router.post('/api/program', program.createProgram)

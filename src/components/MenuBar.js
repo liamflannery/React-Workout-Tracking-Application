@@ -25,8 +25,11 @@ export default function MenuBar() {
     <React.Fragment>
       <CssBaseline />
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
+        
         <Toolbar>
-          <Box sx={{ flexGrow: 0.5}} />
+        <img src = 'images/logo.png' style={{width:60, height:60}}/>
+          <Box sx={{ flexGrow: 0.45}} />
+          
           <IconButton aria-label="home" onClick={() => {toHome()}}>
                 <FitnessCenterIcon fontSize = "large"/>
            </IconButton>
