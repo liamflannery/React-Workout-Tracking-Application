@@ -3,7 +3,7 @@ let rawdata = fs.readFileSync('server/src/data/programs.json')
 let programs = JSON.parse(rawdata);
 
 
-
+//adds program to the backend
 const createProgram = async (request, response) => {
     const title = request.body.title
     const program = new models.Program({title})
@@ -17,13 +17,13 @@ const createProgram = async (request, response) => {
 
 }
 
-
+//returns all programs
 const getPrograms = async (request, response) => {
     
     response.json({programs})
 
 }
-
+//returns specific program based on id
 const getProgram = async (request, res) => {
     const id = Number(request.params.id)
     
@@ -38,7 +38,7 @@ const getProgram = async (request, res) => {
     
 
 }
-
+//updates a program's days to reflect a change
 const updateProgram = async(request, res) => {
     const id = Number(request.params.id)
     

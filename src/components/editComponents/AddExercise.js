@@ -1,5 +1,5 @@
 import '../../App.css'
-
+//adds exercise to day
 const AddExercise = (props) => {
     return(
         <div
@@ -21,6 +21,7 @@ const AddExercise = (props) => {
                     { props.item.title }
                 </p> 
                 <div className="exercises-thumb" style={{marginLeft:0, background:"white", width:80, height:80, cursor:'pointer'}}>
+                    {/* adds exercise to given day when clicked */}
                     <img src={'/images/plus.png'} alt={`${'Wed'} Thumb`} onClick={() => props.addExercise(props.item)}/>
                 </div>
                 </li>

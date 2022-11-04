@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../../App.css';
 import { v4 as uuid } from 'uuid';
+//list days in a specific program
 const DayList = (props) =>{
    
-  
-
     function handleOnDragEnd(result) {
         if (!result.destination) return;
 
@@ -26,6 +25,7 @@ const DayList = (props) =>{
                   {props.programDays.map(({id, title, thumb, uid}, index) => {
                 
                     return (
+                      // represents each day as a draggable object
                       <Draggable key={uid} draggableId={uid.toString()} index={index}>
                         {(provided) => (
                           <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>

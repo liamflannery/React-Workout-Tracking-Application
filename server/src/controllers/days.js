@@ -1,7 +1,7 @@
 const fs = require('fs')
 let rawdata = fs.readFileSync('server/src/data/days.json')
 let days = JSON.parse(rawdata);
-
+//adds day to the backend
 const createDay = async (request, response) => {
 
   
@@ -18,12 +18,13 @@ const createDay = async (request, response) => {
         }
 
 }
-
+//returns all days
 const getDays = async (request, response) => {
     
     response.json({days})
 
 }
+//returns day based on id
 const getDay = async (request, res) => {
     const id = Number(request.params.id)
     

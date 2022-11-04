@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../../App.css';
 import { v4 as uuid } from 'uuid';
+//list exercises as draggable objects
 const ExerciseList = (props) =>{
    
   
@@ -26,6 +27,7 @@ const ExerciseList = (props) =>{
                   {props.dayExercises.map(({id, title, thumb, uid}, index) => {
                 
                     return (
+                      // lists each exercise as draggable object
                       <Draggable key={uid} draggableId={uid.toString()} index={index}>
                         {(provided) => (
                           <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>

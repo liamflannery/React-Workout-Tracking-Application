@@ -1,39 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-
-import EditBox from "../components/editComponents/EditBox";
-import OnDragEnd from "../components/editComponents/OnDragEnd";
-import { Outlet, Link, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import DayList from '../components/editComponents/DayList';
 import dayService from '../services/days';
-import { withTheme } from "@emotion/react";
 import AddDay from "../components/editComponents/AddDay";
 import { v4 as uuid } from 'uuid';
-import { CompareSharp } from "@mui/icons-material";
-
-
 
 
 const EditProgram = () => {
   const programId = useParams().id
-  const navigate = useNavigate()
-  const editDay = () => {
-      navigate('/edit/day')
-  }
   
   const [items, setItems] = useState([])
 
   const [programDays, setProgramDays] = useState([])
   const [allDays, setAllDays] = useState([])
   
-  const updateProgram = async() => {
-    const dayIds = []
-    programDays.forEach(element => {
-      dayIds.push(element.id)
-    })
-    console.log("updating")
-    await dayService.updateProgram(programId, dayIds)
-  }
+  //updates the data on the backend when changed
+  // const updateProgram = async() => {
+  //   const dayIds = []
+  //   programDays.forEach(element => {
+  //     dayIds.push(element.id)
+  //   })
+  //   console.log("updating")
+  //   await dayService.updateProgram(programId, dayIds)
+  // }
+
+  //adds day from all days list to program days list
   const addDay = (element) => {
     console.log(items, element)
     const addElement = 
@@ -42,33 +33,26 @@ const EditProgram = () => {
           thumb: element.thumb,
           uid: uuid()
         }
-    
     setItems(items.concat(addElement))
-  
-    console.log("add element")
   }
 
-  
+  //updates program days
   useEffect(() => {
      setProgramDays(items)
-     //updateProgram()
   }, [items])
 
-  useEffect(() => {
-    //updateProgram()
- }, [programDays])
-
+  //calls program days from the backend
   useEffect(() => {
     getProgramDays()
  }, [allDays])
 
-
-
+ //gets all days from the backend
   const getDays = async() => {
     const daysParam = await dayService.getAllDays()
     setAllDays(daysParam.days.days)
   }
 
+  //gets the days of a specific program using that programs day ids
   const getProgramDays = async() => {
     const program = await dayService.getProgram(programId)
     const days = []
@@ -113,10 +97,11 @@ const EditProgram = () => {
                   <div class="seven columns">
                   <input class="u-full-width" type="email" placeholder="Enter program name..." id="exampleEmailInput"/>
                   <label for="exampleDay">Program Days</label>
-                  {/* <EditBox columnId = {Object.entries(columns)[0][0]} column = {Object.entries(columns)[0][1]} /> */}
-                  <DayList programDays = {programDays} setProgramDays = {setProgramDays} />
+                    {/* displays current days in program  */}
+                    <DayList programDays = {programDays} setProgramDays = {setProgramDays} />
                   </div>
                   <div class="five columns">
+                    {/* displays all days, with the ability to add each one to the current program */}
                   <label for="exampleRecipientInput">All Days</label>
                       {allDays.map((item, index) => {
                         return(
