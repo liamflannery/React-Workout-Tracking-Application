@@ -5,6 +5,7 @@ import dayService from '../services/days';
 import Collapsible from 'react-collapsible';
 //import axios from "axios";
 import  "./DayPage.css";
+import { fontSize } from '@mui/system';
 
 const DayPage =() => {
 
@@ -36,7 +37,7 @@ const DayPage =() => {
     { id:2,
       exercises: "Leg Press",
       reps: "6",
-      weight: "140kg",
+      weight: "90kg",
       child: [
         {
           excercises: "",
@@ -115,47 +116,63 @@ const DayPage =() => {
    
      return (
        <div className="container">
-           <h1>Day 1 Workout</h1>
+        <header className="App-header">
+         
 
          <table>
-      
-         
-           <tr>
-             <th>Exercise</th>
-             <th>Weight</th>
-             <th>Reps</th>
+         <tr style={{ 'backgroundColor': '#1876D3', 'color' : 'white' }}>
+             <th>Day 1 Workout</th>
            </tr>
           
            {data.map((title, key) => {
              return (
-              <Collapsible trigger="Show Exercise ">  
-               <tr key={key}>
-              
-                 <th>{title.exercises}
-                
-                 </th>
-                 <th>{title.weight}
-                 <p>80kg</p>
-                 <p>80kg</p>
-                 </th>
-                 <th>{title.reps}
-                <p>6</p>
-                <p>6</p>
-                
-                <input type="checkbox" />Complete
-      </th>
+              <tr>
+              <div class="row">
+                <div class="nine columns" >
+                  
+                  <Collapsible trigger={<h3>{title.exercises}</h3>}>  
+                  <tr key={key}>
+                    <th>
+                      <input class="u-max-full-width" type="text" placeholder={title.weight} id="exampleEmailInput" style={{width:65, fontSize:17}}/> <br/>
+                      <input class="u-max-full-width" type="text" placeholder="80kg" id="exampleEmailInput" style={{width:65, fontSize:17}}/> <br/>
+                      <input class="u-max-full-width" type="text" placeholder="80kg" id="exampleEmailInput" style={{width:65, fontSize:17}}/>
+                    </th>
+                    <th>
+                      <input class="u-max-full-width" type="text" placeholder={title.reps} id="exampleEmailInput" style={{width:65, fontSize:17}}/> <br/>
+                      <input class="u-max-full-width" type="text" placeholder="6" id="exampleEmailInput" style={{width:65, fontSize:17}}/> <br/>
+                      <input class="u-max-full-width" type="text" placeholder="6" id="exampleEmailInput" style={{width:65, fontSize:17}}/>
+                    </th>
+                    <th>
+                      <img src='./images/tick.png' style={{background:"white", width:30, height:30, cursor:'pointer'}}/> <br/>
+                      <img src='./images/tick.png' style={{background:"white", width:30, height:30, cursor:'pointer'}}/> <br/>
+                      <img src='./images/tick.png' style={{background:"white", width:30, height:30, cursor:'pointer'}}/> 
+                    
 
-                 
-                
-    
-               </tr>
+
+                    </th>
+                  
+                  
+             
+          
+                 </tr>
                 </Collapsible> 
+                
+                </div>
+                <div class="one column" >
+                
+                <img src='./images/tick.png' style={{background:"white", width:40, height:40, cursor:'pointer'}}/> 
+           
+                </div>
+                </div>
+                </tr>
+                
+               
              )
            })}
             
          
          </table>
-       
+           </header>
          </div>
    
      );

@@ -29,7 +29,7 @@ function App() {
                   <Route path="day" element={<DayPage/>} />
                   <Route path="edit" element={<ProgramManager/>} />
                   <Route path="edit/program/:id" element={<EditProgram/>} />
-                  <Route path="edit/day" element={<EditDay/>} />  
+                  <Route path="edit/day/:id" element={<EditDay/>} />  
                   
                 </Route>
               </Routes>

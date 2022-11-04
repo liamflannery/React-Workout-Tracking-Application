@@ -1,48 +1,39 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import '../../App.css';
-const ExerciseList = () =>{
-    const exerciseList = [
-        {
-          id: 'bench',
-          name: 'Bench Press',
-          thumb: '/images/bench_press.png'
-        },
-        {
-            id: 'squat',
-            name: 'Squat',
-            thumb: '/images/squat.jpeg'
-        }
-    ]
-    const [exercises, updateExercises] = useState(exerciseList);
+import { v4 as uuid } from 'uuid';
+const ExerciseList = (props) =>{
+   
+  
 
     function handleOnDragEnd(result) {
         if (!result.destination) return;
 
-            const items = Array.from(exercises);
+            const items = Array.from(props.dayExercises);
             const [reorderedItem] = items.splice(result.source.index, 1);
             items.splice(result.destination.index, 0, reorderedItem);
 
-            updateExercises(items);
+            props.setDayExercises(items);
     }
         
         return (
        
-        <div className="App">
+        
           <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="exercises">
               {(provided) => (
                 <ul className="exercises" {...provided.droppableProps} ref={provided.innerRef}>
-                  {exercises.map(({id, name, thumb}, index) => {
+                  {props.dayExercises.map(({id, title, thumb, uid}, index) => {
+                
                     return (
-                      <Draggable key={id} draggableId={id} index={index}>
+                      <Draggable key={uid} draggableId={uid.toString()} index={index}>
                         {(provided) => (
                           <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                             <div className="exercises-thumb">
-                              <img src={thumb} alt={`${name} Thumb`} />
+                              <img src={'/images/'+`${title}`+'.png'} alt={`${title} Thumb`} />
                             </div>
                             <p>
-                              { name }
+                              { title }
                             </p>
                           </li>
                         )}
@@ -54,7 +45,7 @@ const ExerciseList = () =>{
               )}
             </Droppable>
           </DragDropContext>
-      </div>         
+      
         );
         
 }

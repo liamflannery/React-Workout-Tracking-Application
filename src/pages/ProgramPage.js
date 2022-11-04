@@ -20,7 +20,7 @@ const ProgramPage = () =>{
         return (
         <div className= "container">
             <header className="App-header">
-                <h1>Program Page</h1>
+                <h1>Your Program</h1>
                
                 <Daycontent/>
             </header>

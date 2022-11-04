@@ -27,7 +27,7 @@ export default function MenuBar() {
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
         
         <Toolbar>
-        <img src = 'images/logo.png' style={{width:60, height:60}}/>
+        <img src = './images/logo.png' style={{width:60, height:60}}/>
           <Box sx={{ flexGrow: 0.45}} />
           
           <IconButton aria-label="home" onClick={() => {toHome()}}>

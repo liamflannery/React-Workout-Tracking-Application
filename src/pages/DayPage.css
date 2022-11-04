@@ -1,40 +1,42 @@
 h1 {
    
-    padding-right: 25px;
+  padding-right: 25px;
 }
-  
+
 .container{
-   background-color: lightblue;
-    text-align: center;
+ background-color: rgb(255, 255, 255);
+  text-align: left;
+ 
 }
 .Collapsible {
-        background-color: lightblue;
-        color: rgb(91, 16, 16);
-        cursor: pointer;
-        padding: 18px;
-        width: 150%;
-        border: none;
-        text-align: center;
-        outline: none;
-        font-size: 15px;
-  }
-  p{
-    font-size: 20px;
-    right: 150px;  
-  }
-  th{
-    text-align: center;
-padding-right:50px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+}
+p{
+  font-size: 20px;
+  right: 150px;  
+}
+th{
+  text-align: center;
+padding-right:2px;
 
 
-  }
-  table{
-  border: 1px solid #cccccc;
+}
+table{
+border: 5px solid #000000;
 
-  }
-  tr{
-      font-size: 20px;
-      
-  
-    text-align: center;
-  }
+
+}
+tr{
+    font-size: 40px;
+    
+
+  text-align: center;
+}

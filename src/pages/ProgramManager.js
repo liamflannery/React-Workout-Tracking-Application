@@ -8,10 +8,19 @@ const ProgramManager = () =>{
         return (
         <div class = "container">
             <header className="App-header">
-                <h1>Program Manager</h1>
-                <Link to="/edit/program/0">Edit Program 1</Link>
-                <Link to="/edit/program/1">Edit Program 2</Link>
-                <Link to="/edit/program/2">Edit Program 3</Link>
+                <h1>Edit Manager</h1>
+                <div class="row" >
+                    <div class="seven columns">
+                        <Link to="/edit/program/0" >Program 1</Link> <br/>
+                        <Link to="/edit/program/1">Program 2</Link> <br/>
+                        <Link to="/edit/program/2">Program 3</Link> 
+                    </div>
+                    <div class="five columns">
+                        <Link to="/edit/day/0">Day 1</Link> <br/>
+                        <Link to="/edit/day/1">Day 2</Link> <br/>
+                        <Link to="/edit/day/2">Day 3</Link> 
+                    </div>
+                </div>
             </header>
         </div>
             
