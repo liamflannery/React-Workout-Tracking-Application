@@ -8,7 +8,7 @@ import  "./DayPage.css";
 import { fontSize } from '@mui/system';
 
 const DayPage =() => {
-
+//columns to contain the exercises, reps and weight. 
   const columns = [
     {
       title: "Exercises",
@@ -23,7 +23,9 @@ const DayPage =() => {
       key: "weight"
     }
    
+    
   ];
+  //data for each exercise with the reps and weight. given each exercise an id
   const data = [
     {
       id:1,
@@ -94,7 +96,7 @@ const DayPage =() => {
 
   const [day, setDayName] = useState()
    
-     
+     //passing the objects from the backend files to list the exercises for selected workout day.
    const getCurrentDay = async() => {
    
         
@@ -107,7 +109,7 @@ const DayPage =() => {
      
 
    }
-  
+  //render page
    useEffect(() => {
      getCurrentDay();
      
@@ -123,13 +125,13 @@ const DayPage =() => {
          <tr style={{ 'backgroundColor': '#1876D3', 'color' : 'white' }}>
              <th>Day 1 Workout</th>
            </tr>
-          
+          //from the columns data to showcase the exercises
            {data.map((title, key) => {
              return (
               <tr>
               <div class="row">
                 <div class="nine columns" >
-                  
+                  //dropdown table to showcase exercises for the day
                   <Collapsible trigger={<h3>{title.exercises}</h3>}>  
                   <tr key={key}>
                     <th>
@@ -158,6 +160,7 @@ const DayPage =() => {
                 </Collapsible> 
                 
                 </div>
+            //interactive checkbox, use can click when completing the exercise.
                 <div class="one column" >
                 
                 <img src='./images/tick.png' style={{background:"white", width:40, height:40, cursor:'pointer'}}/> 
