@@ -34,9 +34,9 @@ router.post('/api/program/:id', days.createDay)
 
 /* GET a day URL to get details of a day */
 router.get('/api/program/:id', program.getProgram)
-
+/*/* GET a days URL to get details of the days */
 router.get('/api/day', days.getDays)
-
+/* GET a day URL to get content of a workout day */
 router.get('/api/day/:id', days.getDay)
 
 router.put('/api/program/:id', program.updateProgram)
