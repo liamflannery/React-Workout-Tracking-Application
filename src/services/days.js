@@ -33,6 +33,7 @@ const getAllDays= (user) => {
     return axios.get(baseURL + 'api/day/',config)
                 .then(response => response.data)
 }
+//get the excerises for the day
 const getDay = (id) => {
     return axios.get(baseURL + 'api/day/' + id)
                 .then(response => response.data)
@@ -68,7 +69,7 @@ const addProgram = (title) => {
     return axios.post(baseURL + 'api/programs/', titleObj)
                 .then(response => response.data)
 }
-
+//delete the a workout day on the program
 const deleteDay = (user, convId, dayId) => {
     const config = {headers: {Authorization: "Basic " + user.token}}
     return axios.delete(baseURL + 'api/programs/' + convId + '/' + dayId, config)
