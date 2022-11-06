@@ -2,12 +2,13 @@ h1 {
    
   padding-right: 25px;
 }
-
+//text location on the page
 .container{
  background-color: rgb(255, 255, 255);
   text-align: left;
  
 }
+//collapise trigger to format in tables
 .Collapsible {
       background-color: rgb(255, 255, 255);
       color: rgb(0, 0, 0);
@@ -23,6 +24,7 @@ p{
   font-size: 20px;
   right: 150px;  
 }
+//align the list of exercises in the center
 th{
   text-align: center;
 padding-right:2px;
