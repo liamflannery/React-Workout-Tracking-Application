@@ -1,3 +1,20 @@
+Screenshots of our pages are as follows:
+# Login Page
+![login page](https://github.com/MQCOMP3120/group-project-group-aa/blob/main/SCREENSHOTS/LoginPage.png)
+# Sign Up Page
+![register page](https://github.com/MQCOMP3120/group-project-group-aa/blob/main/SCREENSHOTS/SignUpPage.png)
+# Program Page
+![program page](https://github.com/MQCOMP3120/group-project-group-aa/blob/main/SCREENSHOTS/ProgramPage.png)
+# Day Page
+![day page](https://github.com/MQCOMP3120/group-project-group-aa/blob/main/SCREENSHOTS/DayPage.png)
+# Day Page (Expanded View)
+![day page expanded](https://github.com/MQCOMP3120/group-project-group-aa/blob/main/SCREENSHOTS/DayPage_Expanded.png)
+# Edit Program Page
+![edit program page](https://github.com/MQCOMP3120/group-project-group-aa/blob/main/SCREENSHOTS/EditProgramPage.png)
+# Edit Day Page
+![edit day page](https://github.com/MQCOMP3120/group-project-group-aa/blob/main/SCREENSHOTS/EditDayPage.png)
+
+
 ## An outline of the application you were aiming to build, target users, data sources etc (similar to the proposal)
 The main purpose of our application is to provide an easy way for the user to create and record gym workouts, seeing progressive overload over time. The goal of the application is for the experience to be as simple and distraction free as possible, allowing the user to put their focus into the current workout.
 Our target audience is gym-goers with a little bit of experience in following a program who need a simple and intuitive way of recording their progress. Our target audience probably isn’t first time gym goers who need guidance on programs or technique as our focus will not be on providing a program or recommendations.
